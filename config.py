@@ -6,7 +6,7 @@ class Config:
         'host': 'localhost',
         'port': 1337,
         'debug': True,
-        "access_log": False,
+        "access_log": True,
         "auto_reload": True,
         'workers': 4
     }
