@@ -1,0 +1,29 @@
+version: '3.9'
+
+services:
+
+  example-api:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: example-api
+    container_name: example-api
+    restart: always
+    ports:
+      - '${SERVER_PORT}:${SERVER_PORT}'
+    volumes:
+      - .:/example-api
+    env_file:
+      - .env
+    command: python3 main.py
+
+  cache:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: example-api
+    container_name: cache
+    restart: always
+    volumes:
+      - .:/example-api
+    command: python3 run.py refresh_cache
