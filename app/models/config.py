@@ -1,5 +1,7 @@
 import time
 
+from sanic_openapi.openapi2 import doc
+
 from app.constants.mongodb_constants import MongoKeys
 
 
@@ -22,3 +24,16 @@ def json_dict_to_config(json_dict):
 
     config.next_synced_timestamp = json_dict.get('next_synced_timestamp', int(time.time()))
     return config
+
+
+class PostConfig:
+    next_synced_timestamp = doc.Integer(description="Next synced timestamp")
+
+
+config_json_schema = {
+    'type': 'object',
+    'required': ['next_synced_timestamp'],
+    'properties': {
+        'next_synced_timestamp': {'type': 'integer'}
+    }
+}

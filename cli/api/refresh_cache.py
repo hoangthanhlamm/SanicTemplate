@@ -18,7 +18,7 @@ def refresh_cache():
     _db = MongoDB()
     logger.info(f'Connected to graph {_db.connection_url}')
 
-    cached = DBCached('db://data/api/')
+    cached = DBCached()
 
     while True:
         try:

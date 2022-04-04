@@ -20,8 +20,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 from app.utils.logger_utils import get_logger
-from cli.base.executors.batch_work_executor import BatchWorkExecutor
-from cli.base.jobs.base_job import BaseJob
+from cli.jobs.base.executors.batch_work_executor import BatchWorkExecutor
+from cli.jobs.base.jobs.base_job import BaseJob
 
 logger = get_logger(__name__)
 

@@ -25,11 +25,11 @@ import time
 
 from requests.exceptions import Timeout as RequestsTimeout, HTTPError, TooManyRedirects
 
-from cli.base.executors.bounded_executor import BoundedExecutor
-from cli.base.executors.fail_safe_executor import FailSafeExecutor
-from cli.base.executors.utils.progress_logger import ProgressLogger
-from cli.base.executors.utils.retriable_value_error import RetriableValueError
-from cli.base.utils.utils import dynamic_batch_iterator
+from cli.jobs.base.executors.bounded_executor import BoundedExecutor
+from cli.jobs.base.executors.fail_safe_executor import FailSafeExecutor
+from cli.jobs.base.executors.utils.progress_logger import ProgressLogger
+from cli.jobs.base.executors.utils.retriable_value_error import RetriableValueError
+from cli.jobs.base.utils.utils import dynamic_batch_iterator
 
 RETRY_EXCEPTIONS = (ConnectionError, HTTPError, RequestsTimeout, TooManyRedirects, OSError,
                     RetriableValueError)

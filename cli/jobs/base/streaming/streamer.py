@@ -25,8 +25,8 @@ import logging
 import os
 import time
 
-from cli.base.streaming.streamer_adapter_stub import StreamerAdapterStub
-from cli.base.utils.file_utils import smart_open
+from cli.jobs.base.streaming.streamer_adapter_stub import StreamerAdapterStub
+from cli.jobs.base.utils.file_utils import smart_open
 
 
 class Streamer:

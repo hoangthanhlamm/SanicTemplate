@@ -23,7 +23,7 @@
 import logging
 from datetime import datetime
 
-from cli.base.executors.utils.atomic_counter import AtomicCounter
+from cli.jobs.base.executors.utils.atomic_counter import AtomicCounter
 
 
 # Thread safe progress logger.
