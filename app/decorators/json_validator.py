@@ -2,7 +2,8 @@ from functools import wraps
 
 from jsonschema import ValidationError, validate
 from sanic.request import Request
-from sanic.response import text
+
+from app.hooks.error import ApiBadRequest
 
 
 def validate_with_jsonschema(jsonschema: dict):
@@ -15,8 +16,8 @@ def validate_with_jsonschema(jsonschema: dict):
 
                     try:
                         validate(request.json, jsonschema)
-                    except ValidationError:
-                        return text(None, 400)
+                    except ValidationError as ex:
+                        raise ApiBadRequest(ex.message)
 
             return await fn(*args, **kwargs)
         return wrapper

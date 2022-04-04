@@ -1,5 +1,4 @@
 from sanic import Sanic
-from sanic.exceptions import SanicException
 from sanic_cors import CORS
 
 from app.misc.log import log
@@ -8,7 +7,7 @@ from app.misc.log import log
 def register_extensions(sanic_app: Sanic):
     from app import extensions
 
-    extensions.cors = CORS(sanic_app,resources={r"/*": {"origins": "*"}})
+    extensions.cors = CORS(sanic_app, resources={r"/*": {"origins": "*"}})
 
 
 def register_views(sanic_app: Sanic):
@@ -18,7 +17,7 @@ def register_views(sanic_app: Sanic):
 
 
 def register_hooks(sanic_app: Sanic):
-    from app.hooks.error import broad_exception_handler, sanic_exception_handler
+    # from app.hooks.error import broad_exception_handler, sanic_exception_handler
     from app.hooks.request_context import after_request
 
     sanic_app.register_middleware(after_request, 'response')
@@ -36,7 +35,7 @@ def create_app(*config_cls) -> Sanic:
         sanic_app.config.update_config(config)
 
     register_extensions(sanic_app)
-    register_views(sanic_app)
+    # register_views(sanic_app)
     register_hooks(sanic_app)
 
     return sanic_app
