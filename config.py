@@ -48,3 +48,19 @@ class MongoDBConfig:
 class TeleBotConfig:
     TOKEN_ID = os.getenv("TELE_BOT_TOKEN_ID") or "123456789:AAGjZOcK58OAe2nxrb2k8-q0Rk5WpE6NgEo"
     BOT_CHAT_IDS = os.getenv("TELE_BOT_CHAT_IDS") or "12345,123456"
+
+
+class RabbitMQConfig:
+    USERNAME = os.getenv("RABBITMQ_USERNAME")
+    PASSWORD = os.getenv("RABBITMQ_PASSWORD")
+    HOST = os.getenv("RABBITMQ_HOST")
+    PORT = os.getenv("RABBITMQ_PORT")
+
+
+class NotifierConfig:
+    TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN") or ""
+
+    MAIL_HOST = os.getenv('MAIL_HOST')
+    MAIL_PORT = os.getenv('MAIL_PORT')
+    MAIL_ADDRESS = os.getenv('MAIL_ADDRESS')
+    MAIL_PASSWORD = os.getenv('MAIL_PASSWORD')

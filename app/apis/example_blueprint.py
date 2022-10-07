@@ -1,3 +1,5 @@
+import time
+
 from sanic import Blueprint
 from sanic.response import json
 from sanic_openapi.openapi2 import doc
@@ -8,8 +10,12 @@ from app.decorators.auth import protected
 from app.decorators.json_validator import validate_with_jsonschema
 from app.hooks.error import ApiUnauthorized
 from app.models.config import PostConfig, config_json_schema, json_dict_to_config
+from app.services.queue.tasks import task_send_mail
 from app.utils.jwt_utils import generate_jwt
+from app.utils.logger_utils import get_logger
 from config import Config
+
+logger = get_logger('Example API')
 
 example = Blueprint('example_blueprint', url_prefix='/example')
 
@@ -60,3 +66,23 @@ async def update_config(request):
     return json({
         'message': 'success',
     })
+
+
+@example.route('/email/register', methods={'POST'})
+@doc.tag("Example")
+@doc.summary("Send mail with queue")
+@doc.consumes(doc.String(name="email", description="Email"), location="query", required=True)
+async def register_email(request):
+    email_address = request.args.get('email')
+    mail = {
+        'recipients': [email_address],
+        'subject': f'Register {str(int(time.time()))[-3:]}',
+        'html': """
+            <p>Thank you for your subscribe!</>
+        """
+    }
+
+    # Use RabbitMQ to send mail background
+    task_send_mail.delay(mail)
+
+    return json({'status': 'success'})
