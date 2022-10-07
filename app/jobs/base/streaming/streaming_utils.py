@@ -2,7 +2,7 @@ import logging
 import signal
 import sys
 
-from cli.jobs.base.utils.logging_utils import logging_basic_config
+from app.jobs.base.utils.logging_utils import logging_basic_config
 
 
 def configure_signals():

@@ -2,7 +2,7 @@ from web3 import Web3
 from web3.middleware import geth_poa_middleware
 
 from app.utils.logger_utils import get_logger
-from cli.services.artifacts.bep20_abi import BEP20_ABI
+from app.artifacts.bep20_abi import BEP20_ABI
 
 logger = get_logger('State Service')
 

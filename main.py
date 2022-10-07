@@ -20,6 +20,8 @@ app.config["API_CONTACT_EMAIL"] = Config.API_CONTACT_EMAIL
 
 app.config["RESPONSE_TIMEOUT"] = Config.RESPONSE_TIMEOUT
 
+app.blueprint(api)
+
 
 @app.route("/ping", methods={'GET'})
 @doc.tag("Ping")
@@ -46,7 +48,9 @@ async def add_spent_time(request, response):
 
 if __name__ == '__main__':
     if 'SECRET_KEY' not in os.environ:
-        log(message='SECRET KEY is not set in the environment variable.',
-            keyword='WARN')
-    app.blueprint(api)
+        log(
+            message='SECRET KEY is not set in the environment variable.',
+            keyword='WARN'
+        )
+
     app.run(**app.config['RUN_SETTING'])
