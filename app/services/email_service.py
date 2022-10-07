@@ -14,8 +14,6 @@ class EmailService:
         self.address = email_address
         self.password = email_password
 
-        self.server = None
-
     # def reconnect(self):
     #     # Set up the server
     #     context = ssl.create_default_context()

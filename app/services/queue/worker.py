@@ -19,6 +19,9 @@ app.conf.update(
     task_annotations={
         'send_mail': {
             'rate_limit': '6/m'
+        },
+        'send_tele': {
+            'rate_limit': '30/m'
         }
     }
 )

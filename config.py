@@ -45,11 +45,6 @@ class MongoDBConfig:
     DATABASE = "example_db"
 
 
-class TeleBotConfig:
-    TOKEN_ID = os.getenv("TELE_BOT_TOKEN_ID") or "123456789:AAGjZOcK58OAe2nxrb2k8-q0Rk5WpE6NgEo"
-    BOT_CHAT_IDS = os.getenv("TELE_BOT_CHAT_IDS") or "12345,123456"
-
-
 class RabbitMQConfig:
     USERNAME = os.getenv("RABBITMQ_USERNAME")
     PASSWORD = os.getenv("RABBITMQ_PASSWORD")
